@@ -1,0 +1,6 @@
+- name: Defining mandatory values
+  hosts: localhost
+  tasks:
+  - name: mandatory variable
+    set_fact:
+      my_var: "{{ undef(hint='You must specify your Galaxy API key')}}"

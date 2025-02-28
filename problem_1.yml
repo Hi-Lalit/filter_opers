@@ -1,0 +1,6 @@
+- name: Handling undefined variables
+  hosts: localhost
+  tasks:
+  - name: undefined variable
+    debug:
+      msg: "{{ my_var | default('null')}}"

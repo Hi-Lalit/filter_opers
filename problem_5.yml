@@ -1,0 +1,32 @@
+# convert dictionaries to lists
+# convert lists to dictionaries
+- name: conversion of dictionaries to lists and vice versa
+  hosts: localhost
+  vars:
+    my_dict:
+      name: 'Lalit'
+      job: 'Quality Engineer'
+      city: 'Moradabad'
+
+    my_list:
+    - key: Application
+      value: payment
+    - key: Environment
+      value: dev
+
+  tasks:
+  - name: convert dict to list
+    set_fact:
+      list1: "{{ my_dict | dict2items }}"
+
+  - name: print list1
+    debug:
+      msg: "{{ list1}}"
+
+  - name: convert my_list to dict
+    set_fact:
+      dict1: "{{ my_list | items2dict }}"
+
+  - name: print dict1
+    debug:
+      msg: "{{ dict1 }}"

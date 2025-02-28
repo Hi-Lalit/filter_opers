@@ -1,0 +1,26 @@
+# Combining items from multiple lists using zip
+- name: zip filter
+  hosts: localhost
+  vars:
+    list1:
+    - 1
+    - 2
+    - 3
+    - 4
+
+    list2:
+    - a
+    - b
+    - c
+    - d
+    - e
+    - f
+
+  tasks:
+  - name: combine two list
+    set_fact:
+      combine_list: "{{ list1 | zip_longest((list2), fillvalue= 'x') | list}}"
+
+  - name: print the combined list
+    debug:
+      msg: "{{ combine_list | map('join', ':') | join(', ') }}"

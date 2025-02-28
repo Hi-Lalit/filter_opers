@@ -1,0 +1,15 @@
+# using ternary filter
+- name: use case of ternary filter
+  hosts: localhost
+  vars:
+    name: 'Lalit'
+  tasks:
+  - name: ternary_filter
+    set_fact:
+      result: "{{ (name == '') | ternary('Eligible', 'Not Eligible', omit) }}"
+  - name: print result
+    debug:
+      msg: "{{ result }}"
+
+# command to run playbook
+# ansible-playbook problem_3.yml

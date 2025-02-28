@@ -1,0 +1,13 @@
+# split a string
+- name: split a string
+  hosts: localhost
+  vars:
+    fruits: "apple,banana,grapes"
+  tasks:
+  - name: split string
+    set_fact:
+      split_fruits: "{{ fruits.split(',') }}"
+    register: output
+  - name: print split string
+    debug:
+      msg: " split_list is: {{ split_fruits }}, data type: {{ split_fruits | type_debug }}, output is: {{ output }}"
