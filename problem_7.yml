@@ -1,0 +1,18 @@
+# permutation
+- name: permutation of a list
+  hosts: localhost
+  vars:
+    my_list:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  tasks:
+  - name: permutation result
+    set_fact:
+      result: "{{ my_list | permutations | list }}"
+
+  - name: print the permutation result
+    debug:
+      msg: "{{ result | map('join', ',') }}"
